@@ -1,9 +1,15 @@
 package com.tepoz.rtepozmusicapp.screens
 
+import android.text.style.BackgroundColorSpan
 import android.util.Log
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
@@ -15,11 +21,19 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.tepoz.rtepozmusicapp.components.AlbumC
 import com.tepoz.rtepozmusicapp.components.AlbumCard
+import com.tepoz.rtepozmusicapp.components.AlbumHeader
+import com.tepoz.rtepozmusicapp.components.AlbumLux
+import com.tepoz.rtepozmusicapp.components.AlbumTitle
 import com.tepoz.rtepozmusicapp.models.AlDetailScreenRoute
 import com.tepoz.rtepozmusicapp.models.Album
 import com.tepoz.rtepozmusicapp.services.MusicApi
+import com.tepoz.rtepozmusicapp.ui.theme.BackgroundColor
+import com.tepoz.rtepozmusicapp.ui.theme.DarkColor
+import com.tepoz.rtepozmusicapp.ui.theme.LightColor
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.Retrofit
@@ -53,17 +67,54 @@ fun HomeScreen(navController: NavController) {
 
     if (loading) {
         Box(
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier
+                .fillMaxSize()
+                .background(BackgroundColor),
             contentAlignment = Alignment.Center
         ) {
-            CircularProgressIndicator()
+            CircularProgressIndicator(
+                color = DarkColor,
+                trackColor = LightColor
+            )
         }
     } else {
-        LazyColumn() {
-            items(albums) { album ->
-                AlbumCard(album = album, onClick = {
-                    navController.navigate(AlDetailScreenRoute(album.id))
+        LazyColumn(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(BackgroundColor)
+                .padding(top = 45.dp),
+            contentPadding = PaddingValues(horizontal = 16.dp, vertical = 12.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp)
+        ) {
+
+            item {
+                AlbumCard()
+            }
+
+            item {
+                AlbumTitle(title = "Albums")
+            }
+
+            item {
+                LazyRow(
+                    horizontalArrangement = Arrangement.spacedBy(12.dp)
+                ) {
+                    items(albums) { album ->
+                        AlbumC (
+                            album = album,
+                            onClick = { navController.navigate(AlDetailScreenRoute( album.id )) }
+                        )
+                    }
                 }
+            }
+
+            item {
+                AlbumTitle(title = "Recently Played")
+            }
+
+            items(albums) { album ->
+                AlbumLux(
+                    album = album
                 )
             }
         }
