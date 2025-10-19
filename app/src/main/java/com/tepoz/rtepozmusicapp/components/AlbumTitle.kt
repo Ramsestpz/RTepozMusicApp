@@ -28,7 +28,7 @@ fun AlbumTitle(title: String) {
             fontSize = 24.sp
         )
         Text(
-            text = "See more",
+            text = "ver mas..",
             color = LightColor,
             style = MaterialTheme.typography.bodyMedium,
             fontSize = 18.sp
