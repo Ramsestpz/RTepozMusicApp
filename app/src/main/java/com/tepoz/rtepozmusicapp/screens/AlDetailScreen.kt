@@ -54,7 +54,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 @Composable
 fun AlbumDetailScreen(albumId: String) {
-    val BASE_URL = "https://music.juanfrausto.com/api/"
+    val BASE_URL = "https://music.juanfrausto.com/"
     var album by remember { mutableStateOf<Album?>(null) }
 
     LaunchedEffect(true) {

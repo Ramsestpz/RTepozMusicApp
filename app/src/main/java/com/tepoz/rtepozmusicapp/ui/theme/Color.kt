@@ -10,7 +10,7 @@ val Purple40 = Color(0xFF6650a4)
 val PurpleGrey40 = Color(0xFF625b71)
 val Pink40 = Color(0xFF7D5260)
 
-val LightColor = Color(0xFFD4007E)
-val PrimaryColor = Color(0xFF5E0038)
-val DarkColor = Color(0xFF21001C)
-val BackgroundColor = Color(0xFFFAFBFD)
+val LightColor = Color(0xFFB388EB)        // Lavanda claro para acentos y chips
+val PrimaryColor = Color(0xFF7C4DFF)       // Morado vibrante para botones y overlays
+val DarkColor = Color(0xFF4A148C)          // Morado profundo para fondo del mini reproductor
+val BackgroundColor = Color(0xFFF3F0FA)    // Fondo claro con tinte violeta suave

@@ -13,7 +13,8 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
 import com.tepoz.rtepozmusicapp.models.AlDetailScreenRoute
 import com.tepoz.rtepozmusicapp.models.HomeScreenRoute
-import com.tepoz.rtepozmusicapp.screens.AlDetailScreen
+import com.tepoz.rtepozmusicapp.screens.AlbumDetailScreen
+
 import com.tepoz.rtepozmusicapp.screens.HomeScreen
 
 import com.tepoz.rtepozmusicapp.ui.theme.RTepozMusicAppTheme
@@ -34,7 +35,7 @@ class MainActivity : ComponentActivity() {
                         }
                         composable<AlDetailScreenRoute> { backEntry ->
                             val args = backEntry.toRoute<AlDetailScreenRoute>()
-                            AlDetailScreen(args.id)
+                            AlbumDetailScreen(args.id)
                         }
                     }
                 }

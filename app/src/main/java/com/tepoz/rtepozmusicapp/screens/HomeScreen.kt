@@ -109,14 +109,16 @@ fun HomeScreen(navController: NavController) {
             }
 
             item {
-                AlbumTitle(title = "Recently Played")
+                AlbumTitle(title = "Reproducido Recientemente")
             }
 
             items(albums) { album ->
                 AlbumLux(
                     album = album
                 )
+
             }
+
         }
     }
 }
